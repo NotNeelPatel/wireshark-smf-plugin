@@ -25,21 +25,21 @@ env:
 
 jobs:
   build_linux:
-    uses: SolaceLabs/wireshark-smf-plugin/.github/workflows/ubuntu.yml@main
+    uses: NotNeelPatel/wireshark-smf-plugin/.github/workflows/ubuntu.yml@main
     with:
       MAJOR_VERSION: ${{ inputs.MAJOR_VERSION || '4' }}
       MINOR_VERSION: ${{ inputs.MINOR_VERSION || '2' }}
       PATCH_VERSION: ${{ inputs.PATCH_VERSION || '4' }}
   
   build_windows:
-    uses: SolaceLabs/wireshark-smf-plugin/.github/workflows/windows.yml@main
+    uses: NotNeelPatel/wireshark-smf-plugin/.github/workflows/windows.yml@main
     with:
       MAJOR_VERSION: ${{ inputs.MAJOR_VERSION || '4' }}
       MINOR_VERSION: ${{ inputs.MINOR_VERSION || '2' }}
       PATCH_VERSION: ${{ inputs.PATCH_VERSION || '4' }}
     
   build_macos:
-    uses: SolaceLabs/wireshark-smf-plugin/.github/workflows/macos_arm64.yml@main
+    uses: NotNeelPatel/wireshark-smf-plugin/.github/workflows/macos_arm64.yml@main
     with:
       MAJOR_VERSION: ${{ inputs.MAJOR_VERSION || '4' }}
       MINOR_VERSION: ${{ inputs.MINOR_VERSION || '2' }}
@@ -65,5 +65,6 @@ jobs:
             name: "Wireshark SMF Plugin ${{ inputs.MAJOR_VERSION }}.${{ inputs.MINOR_VERSION }}.${{ inputs.RELEASE_PATCH_VERSION }}"
             tag: "${{ inputs.MAJOR_VERSION }}.${{ inputs.MINOR_VERSION }}.${{ inputs.RELEASE_PATCH_VERSION }}"
             artifacts: "${{ env.LINUX_x86_64_PLUGIN_NAME }}/*, ${{ env.WINDOWS_x64_PLUGIN_NAME }}/*, ${{ env.MACOS_ARM64_PLUGIN_NAME }}/*"
+            bodyFile: "${{ github.workspace }}/src/docs/wireshark_smf_${{ inputs.MAJOR_VERSION }}-${{ inputs.MINOR_VERSION }}-x_instructions.md"
             draft: true
           
