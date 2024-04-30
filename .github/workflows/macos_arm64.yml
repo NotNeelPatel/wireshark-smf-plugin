@@ -49,11 +49,6 @@ jobs:
           path: "./wireshark"
           ref: v${{ inputs.MAJOR_VERSION }}.${{ inputs.MINOR_VERSION }}.${{ inputs.PATCH_VERSION }}
 
-      - name: Install Xcode
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
-
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
